@@ -1,0 +1,9 @@
+<RCC>
+    <qresource prefix="/QtGuiApplication1">
+        <file>Resources/branch-closed.png</file>
+        <file>Resources/branch-end.png</file>
+        <file>Resources/branch-more.png</file>
+        <file>Resources/branch-open.png</file>
+        <file>Resources/vline.png</file>
+    </qresource>
+</RCC>
