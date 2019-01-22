@@ -1,7 +1,7 @@
 #include "QtGuiApplication1.h"
 #include <iostream>
-#include <QTreeWidgetItem>
-#include <QFile>
+#include <QtWidgets/QTreeWidgetItem>
+#include <QtCore/QFile>
 
 using namespace std;
 
