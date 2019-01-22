@@ -132,6 +132,9 @@ $(QTDIR)\bin\windeployqt.exe $(OutDir)</Command>
   <ItemGroup>
     <QtRcc Include="QtGuiApplication1.qrc" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="stylesheet.qss" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Condition="Exists('$(QtMsBuild)\qt.targets')">
     <Import Project="$(QtMsBuild)\qt.targets" />

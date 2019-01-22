@@ -19,9 +19,10 @@ QtGuiApplication1::QtGuiApplication1(QWidget *parent)
     connect(ui.AddItemPB, SIGNAL(clicked()), this, SLOT(addItem()));
     connect(ui.removeItemPB, SIGNAL(clicked()), this, SLOT(removeItem()));
     connect(ui.addBranchPB, SIGNAL(clicked()), this, SLOT(addBranch()));
-    connect(ui.treeWidget, SIGNAL(itemClicked(QTreeWidgetItem *, int)), this, SLOT(itemSelected(QTreeWidgetItem *, int)));
+	connect(ui.treeWidget, SIGNAL(itemClicked(QTreeWidgetItem *, int)), this, SLOT(itemSelected(QTreeWidgetItem *, int)));
+	connect(ui.treeWidget, SIGNAL(itemSelectionChanged()), this, SLOT(itemSelectionChanged()));
+	
 }
-
 
 void QtGuiApplication1::addItem()
 {
@@ -40,7 +41,6 @@ void QtGuiApplication1::removeItem()
     if (!currentItem || !currentItem->parent())
         return;
     currentItem->parent()->removeChild(currentItem);
-    currentItem = nullptr;
 }
 
 void QtGuiApplication1::addBranch()
@@ -49,11 +49,23 @@ void QtGuiApplication1::addBranch()
     auto count = ui.treeWidget->topLevelItemCount();
     QString itemName = QString("Top Level Item %1").arg(ui.treeWidget->topLevelItemCount());
 
-    ui.treeWidget->addTopLevelItem(new QTreeWidgetItem({ itemName }));
+	auto branch = new QTreeWidgetItem({ itemName });
+    ui.treeWidget->addTopLevelItem(branch);
+	ui.treeWidget->clearSelection();
+	ui.treeWidget->setItemSelected(branch, true);
 }
 
 void QtGuiApplication1::itemSelected(QTreeWidgetItem *item, int column)
 {
     cout << "itemSelected" << endl;
     currentItem = item;
+}
+
+
+void QtGuiApplication1::itemSelectionChanged()
+{
+	cout << "itemSelectionChanged" << endl;
+	currentItem = nullptr;
+	if (ui.treeWidget->selectedItems().count()!= 0)
+		currentItem = ui.treeWidget->selectedItems()[0];
 }

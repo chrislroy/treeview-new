@@ -14,7 +14,9 @@ public slots:
     void addItem();
     void removeItem();
     void addBranch();
-    void itemSelected(QTreeWidgetItem *, int);
+	void itemSelected(QTreeWidgetItem *, int);
+	void itemSelectionChanged();
+
 private:
     Ui::QtGuiApplication1Class ui;
 
